@@ -59,3 +59,49 @@ body {
     height: 190px;
     opacity: 0.5;
 }
+
+#key{
+    background-color:transparent; border: none; ;
+}
+
+#Armoire{
+    width: 180px;
+    height: 230px;
+    opacity: 0.5;
+}
+
+
+.inventory {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 150px;
+    z-index: 1000;
+    color: white;
+}
+
+.inventory h3 {
+    margin-top: 0;
+}
+
+.inventory ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.inventory li {
+    margin: 5px 0;
+}
+
+.inventory img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.modal-dialog.modal-lg-custom {
+    max-width: 50%; /* Adjust the percentage as needed */
+}

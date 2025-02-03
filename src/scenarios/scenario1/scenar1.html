@@ -2,19 +2,29 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,">
     <title>Scénario 1</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div id="app">
+        <div id="inventory" class="inventory">
+            <h3>Inventaire</h3>
+            <ul>
+                <li v-if="hasKey">
+                    <img src="../../assets/images/medieval-key.png" id="CleInv">
+                    Clé</li>
+            </ul>
+        </div>
         <div id="background" @mousemove="updateCoordinates">
             <button id="Riddle" class="object btn btn-primary" style="top: 390px; left: 270px;" data-toggle="modal" data-target="#modal1">Objet 1</button>
-            <button class="object btn btn-primary" style="top: 150px; left: 200px;" data-toggle="modal" data-target="#modal2">Objet 2</button>
+            <button id="key" class="object btn btn-primary" style="top: 850px; left: 75px;" data-toggle="modal" data-target="#modal2" v-if="!hasKey">
+                <img src="../../assets/images/medieval-key.png" alt="key" style="width: 70px; height: 70px;"></button>
             <button id="tonneau" class="object btn btn-primary" style="top: 600px; left: 110px;" data-toggle="modal" data-target="#modal3">Objet 3</button>
             <button id="tableau" class="object btn btn-primary" style="top: 320px; left: 1170px;" data-toggle="modal" data-target="#modal4">Objet 4</button>
             <button id="Sortie" class="object btn btn-primary" style="top: 410px; left: 885px;" data-toggle="modal" data-target="#modal5">Sortie</button>
+            <button id="Armoire" class="object btn btn-primary" style="top: 460px; left: 620px;" @click="openArmoireModal">Armoire</button>
         </div>
         <div id="coordinates">
             coordonnées: {{ coordinates.x }}, {{ coordinates.y }}
@@ -52,12 +62,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Indice pour objet 2
-                        <input type="text" v-model="userCode" class="form-control" placeholder="Entrez le code">
+                        Vous avez récupérer une clé!, peut-être qu'elle ouvre quelque chose.
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary" @click="submitCode">Soumettre</button>
+                        <button type="button" class="btn btn-primary" @click="getKey">Récupérer</button>
                     </div>
                 </div>
             </div>
@@ -109,12 +117,33 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Entrez le code pour sortir
+
+                        <em>Le bois, le geste, l’absence et le reflet sont les clés de ta liberté.
+                        Comptez ce qui est fixe, souvenez-vous de ce qu’on vous a offert, remarquez ce qui manque, et observez ce qui se répète.
+                        Assemblez ces vérités pour dévoiler le chiffre qui vous ouvrira la voie.</em>
                         <input type="text" v-model="exitCode" class="form-control" placeholder="Entrez le code de sortie">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                         <button type="button" class="btn btn-primary" @click="submitExitCode">Soumettre</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal6" tabindex="-1" aria-labelledby="modal6Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg-custom">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal6Label">Armoire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       Vous trouvez dans cette armoire 7 bouteilles, correctement disposées.La personne vous ayant enfermé semblait avoir soif.
+                       <br>
+                       <img src="../../assets/images/locker-medieval.jpg" alt="armoire" style="width: 900px; height: 700px;">
                     </div>
                 </div>
             </div>
