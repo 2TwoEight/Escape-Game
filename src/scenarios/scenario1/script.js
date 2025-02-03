@@ -8,25 +8,45 @@ createApp({
             correctAnswer: this.normalizeString('un écho'),
             RiddleAnswer: '1',
             coordinates: { x: 0, y: 0 },
-            hasKey: false
+            hasKey: false,
+            score: 0,
+            timer: 300, // 5 minutes
+            mistakes: 0,
+            interval: null
         };
     },
     methods: {
+        startTimer() {
+            this.interval = setInterval(() => {
+                if (this.timer > 0) {
+                    this.timer--;
+                } else {
+                    clearInterval(this.interval);
+                    alert('Temps écoulé!');
+                }
+            }, 1000);
+        },
+        calculateScore() {
+            this.score = (this.timer * 10) - (this.mistakes * 5);
+        },
         submitCode() {
-            // Vérification de la réponse de l'énigme
             const normalizedUserCode = this.normalizeString(this.userCode);
             if (normalizedUserCode === this.correctAnswer) {
                 alert(`Bonne réponse! Voici le nouveau nombre pour sortir: ${this.RiddleAnswer}`);
+                this.calculateScore();
             } else {
                 alert('Mauvaise réponse. Veuillez réessayer.');
+                this.mistakes++;
             }
         },
         submitExitCode() {
-            // Logique pour soumettre le code de sortie
             if (this.exitCode === '3107') {
                 alert('Code correct! Vous êtes sortie. Bravo!');
+                clearInterval(this.interval);
+                this.calculateScore();
             } else {
                 alert('Code incorrect. Veuillez réessayer.');
+                this.mistakes++;
             }
         },
         updateCoordinates(event) {
@@ -52,6 +72,6 @@ createApp({
 
     },
     mounted() {
-        console.log('Vue est monté');
+        this.startTimer();
     }
 }).mount('#app');

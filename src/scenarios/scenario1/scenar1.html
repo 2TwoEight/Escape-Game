@@ -18,6 +18,11 @@
             </ul>
         </div>
         <div id="background" @mousemove="updateCoordinates">
+            <div class="score-timer">
+                <p>Score: {{ score }}</p>
+                <p>Temps restant: {{ timer }}s</p>
+                <p>Fautes: {{ mistakes }}</p>
+            </div>
             <button id="Riddle" class="object btn btn-primary" style="top: 390px; left: 270px;" data-toggle="modal" data-target="#modal1">Objet 1</button>
             <button id="key" class="object btn btn-primary" style="top: 850px; left: 75px;" data-toggle="modal" data-target="#modal2" v-if="!hasKey">
                 <img src="../../assets/images/medieval-key.png" alt="key" style="width: 70px; height: 70px;"></button>
