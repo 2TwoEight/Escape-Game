@@ -22,7 +22,7 @@ createApp({
                     this.timer--;
                 } else {
                     clearInterval(this.interval);
-                    alert('Temps écoulé!');
+                    alert('Temps écoulé! Vous avez perdu.');
                 }
             }, 1000);
         },
