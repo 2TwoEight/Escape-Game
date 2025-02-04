@@ -39,25 +39,25 @@ body {
     width: 175px;
     height: 175px;
     border-radius: 50%;
-    opacity: 0.5;
+    
 }
 
 #tonneau {
     width: 175px;
     height: 195px;
-    opacity: 0.5;
+    
 }
 
 #tableau{
     width: 80px;
     height: 90px;
-    opacity: 0.5;
+    
 }
 
 #Sortie{
     width: 120px;
     height: 190px;
-    opacity: 0.5;
+    
 }
 
 #key{
@@ -67,7 +67,11 @@ body {
 #Armoire{
     width: 180px;
     height: 230px;
-    opacity: 0.5;
+    
+}
+
+.interactobj{
+    opacity: 0;
 }
 
 
