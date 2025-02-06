@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['message'] = "Connexion réussie!";
-        header("Location: /Escape-Game/index.php");
+        header("Location: ../../index.php");
         exit();
     } else {
         $_SESSION['error'] = "Nom d'utilisateur ou mot de passe incorrect.";
-        header("Location: /Escape-Game/index.php");
+        header("Location: ../../index.php");
         exit();
     }
 }

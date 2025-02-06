@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include("../config/database.php");
@@ -13,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_id'] = $pdo->lastInsertId();
         $_SESSION['username'] = $username;
         $_SESSION['message'] = "Inscription réussie!";
-        header("Location: /Escape-Game/index.php");
+        header("Location: ../../index.php");
         exit();
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) { // Integrity constraint violation
@@ -21,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_SESSION['error'] = "Une erreur est survenue. Veuillez réessayer.";
         }
-        header("Location: /Escape-Game/index.php");
+        header("Location: ../../index.php");
         exit();
     }
 }

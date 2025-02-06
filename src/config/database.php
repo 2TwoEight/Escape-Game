@@ -1,5 +1,5 @@
 <?php
-$host = '127.0.0.1'; //hostname
+$host = 'localhost'; //hostname
 $db = 'Escape_game'; //dbname
 $user = 'root'; //username
 $pass = ''; //password
