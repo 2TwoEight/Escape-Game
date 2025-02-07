@@ -70,9 +70,7 @@ body {
     
 }
 
-.interactobj{
-    opacity: 0;
-}
+
 
 
 .inventory {
@@ -119,4 +117,8 @@ body {
     padding: 10px;
     border-radius: 5px;
     z-index: 1000;
+}
+
+.interactobj{
+    opacity: 0;
 }
