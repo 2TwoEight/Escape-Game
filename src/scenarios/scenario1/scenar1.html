@@ -24,7 +24,7 @@
                 <p>Fautes: {{ mistakes }}</p>
             </div>
             <button id="Riddle" class="object btn btn-primary interactobj" style="top: 370px; left: 260px;" data-toggle="modal" data-target="#modal1">Objet 1</button>
-            <button id="key" class="object btn btn-primary interactkey" style="top: 830px; left: 90px;" data-toggle="modal" data-target="#modal2" v-if="!hasKey">
+            <button id="key" class="object btn btn-primary interactkey" style="top: 830px; left: 90px;" data-toggle="modal" data-target="#modal2" v-if="!hasKey && !armoireOpened">
                 <img src="../../assets/images/medieval-key.png" alt="key" style="width: 70px; height: 70px;"></button>
             <button id="tonneau" class="object btn btn-primar interactobj" style="top: 600px; left: 110px;" data-toggle="modal" data-target="#modal3">Objet 3</button>
             <button id="tableau" class="object btn btn-primary interactobj" style="top: 310px; left: 1170px;" data-toggle="modal" data-target="#modal4">Objet 4</button>

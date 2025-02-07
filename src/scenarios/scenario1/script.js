@@ -9,6 +9,7 @@ createApp({
             RiddleAnswer: '1', // Réponse à l'énigme
             coordinates: { x: 0, y: 0 }, // Coordonnées de la souris
             hasKey: false, // Indique si l'utilisateur a la clé
+            armoireOpened: false, // Indique si l'armoire a été ouverte
             score: 0, // Score de l'utilisateur
             timer: 300, // 5 minutes en secondes
             mistakes: 0, // Nombre d'erreurs
@@ -63,10 +64,12 @@ createApp({
             this.hasKey = true; // Met à jour la variable lorsque la clé est obtenue
             $('#modal2').modal('hide'); // Ferme la modal après avoir obtenu la clé
         },
-        // Ouvre la modal de l'armoire
+        // Ouvre la modal de l'armoire et enlève la clé de l'inventaire
         openArmoireModal(event) {
-            if (this.hasKey) {
-                $('#modal6').modal('show'); // Ouvre la modal si la clé est obtenue
+            if (this.hasKey || this.armoireOpened) {
+                $('#modal6').modal('show'); // Ouvre la modal si la clé est obtenue ou si l'armoire a déjà été ouverte
+                this.armoireOpened = true; // Marque l'armoire comme ouverte
+                this.hasKey = false; // Enlève la clé de l'inventaire
             } else {
                 alert('Vous devez d\'abord récupérer la clé !'); // Affiche une alerte si la clé n'est pas obtenue
             }
