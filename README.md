@@ -39,31 +39,7 @@ Escape-Game est un jeu d'évasion en ligne où les utilisateurs doivent résoudr
 
     - Créez une base de données MySQL.
     - Importez le fichier `database.sql` dans votre base de données.
-
-5. Configurez les paramètres de la base de données dans [database.php](http://_vscodecontentref_/0) :
-
-    ```php
-    <?php
-    $host = 'localhost';
-    $db = 'nom_de_votre_base_de_donnees';
-    $user = 'votre_utilisateur';
-    $pass = 'votre_mot_de_passe';
-    $charset = 'utf8mb4';
-
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-
-    try {
-        $pdo = new PDO($dsn, $user, $pass, $options);
-    } catch (\PDOException $e) {
-        throw new \PDOException($e->getMessage(), (int)$e->getCode());
-    }
-    ?>
-    ```
+    - Modifier `database.php`.
 
 6. Démarrez votre serveur web local (WAMP, XAMPP, etc.).
 
@@ -92,7 +68,7 @@ Escape-Game est un jeu d'évasion en ligne où les utilisateurs doivent résoudr
 
 ## Fonctionnalités
 
-- **Scénarios interactifs** : Plusieurs scénarios avec des énigmes et des indices.
+- **Scénarios interactifs** : Plusieurs scénarios avec des énigmes et des indices. (un seul disponible pour le moment)
 - **Minuteur** : Un minuteur pour chaque scénario.
 - **Classement** : Affiche les meilleurs scores des utilisateurs.
 - **Historique des parties** : Affiche l'historique des parties de l'utilisateur.
