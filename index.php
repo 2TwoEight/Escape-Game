@@ -33,8 +33,12 @@ session_start();
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal">Inscription</a>
                     </li>
                 <?php endif; ?>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="src/leaderboard.html">Classement</a>
+                    <a class="nav-link" href="src/php/leaderboard.php">Classement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="src/php/game_history.php">Historique des parties</a>
                 </li>
             </ul>
         </div>

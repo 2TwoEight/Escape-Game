@@ -49,6 +49,7 @@ createApp({
                 alert('Code correct! Vous êtes sortie. Bravo!');
                 clearInterval(this.interval);
                 this.calculateScore();
+                this.saveScore();
             } else {
                 alert('Code incorrect. Veuillez réessayer.');
                 this.mistakes++;
@@ -77,6 +78,35 @@ createApp({
         // Normalise une chaîne de caractères
         normalizeString(str) {
             return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        },
+        // Enregistre le score dans la base de données
+        saveScore() {
+            fetch('../../php/save_score.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    scenario_id: 1, // ID du scénario actuel
+                    score: this.score,
+                    time_taken: 300 - this.timer,
+                    mistakes: this.mistakes
+                })
+            })
+            .then(response => response.text()) // Changez response.json() en response.text() pour voir la réponse brute
+            .then(text => {
+                console.log('Réponse brute:', text); // Affiche la réponse brute dans la console
+                const data = JSON.parse(text); // Parse la réponse brute en JSON
+                if (data.success) {
+                    alert('Score enregistré avec succès!');
+                } else {
+                    alert('Erreur lors de l\'enregistrement du score: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                alert('Erreur lors de l\'enregistrement du score.');
+            });
         }
     },
     // Méthode appelée lorsque le composant est monté

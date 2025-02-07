@@ -19,3 +19,14 @@ CREATE TABLE scores (
     completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE game_history (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    scenario_id INT,
+    score INT,
+    time_taken INT,
+    mistakes INT,
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
